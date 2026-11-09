@@ -18,11 +18,10 @@ cities <- c("Charlotte", "Los Angeles", "Houston", "Indianapolis", "Jacksonville
 #> Call the function "read_weather" 
 #> Check by reading/glimpsing a single station's file
 
-
-
 library(fs)
 files <- dir_ls("us-weather-history")
 print(path_ext_remove(path_file(files)))
+
 
 
 # QUESTION 2
