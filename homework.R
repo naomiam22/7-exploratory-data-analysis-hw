@@ -67,8 +67,17 @@ rstatix::freq_table(ds$city)
 #> if your check worked? Create a test to mess up the dataset to make sure that your
 #> check does throw an error if the conditions aren't met
 
+library(Hmisc)
+describe(ds$date)
 
+ds_test <- ds %>% 
+  filter(date != min(date))
 
+rstatix::freq_table(ds_test$city) %>% 
+  {
+  if (n < 365)
+  print(str_glue("WARNING:less than 365 days"))
+}
 
 
 #> At this point, your data should look like the "compiled_data.csv" file
@@ -78,6 +87,8 @@ rstatix::freq_table(ds$city)
 # QUESTION 5
 #> Find a function that lets you pull out the month from the date 
 #> and make "month" a factor as a new variable in ds
+
+
 
 
 
