@@ -32,14 +32,16 @@ glimpse(glimpse_data)
 
 view(glimpse_data)
 
+
 # QUESTION 2
 #> Use map() and your new function to read in all 10 stations
 #> Note that because map_dfr() has been superseded, and map() does not automatically bind rows, 
 #> you will need to do so in the code with bind_rows()
 #> Save the resulting dataset to "ds"
 
+ds <- bind_rows(map(stations, read_weather))
+view(ds)
 
-  read_csv(str_glue("{c(stations)}.csv"), )
 
 # QUESTION 3
 #> Make a factor called "city" based on the station variable
