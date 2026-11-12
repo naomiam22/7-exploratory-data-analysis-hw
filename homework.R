@@ -18,11 +18,19 @@ cities <- c("Charlotte", "Los Angeles", "Houston", "Indianapolis", "Jacksonville
 #> Call the function "read_weather" 
 #> Check by reading/glimpsing a single station's file
 
-ds <- 
-  dir_ls("us-weather-history") %>% 
-  read_csv(str_glue("{c(stations)}.csv"), )
+all_files <- list.files("us-weather-history")
 
+read_weather <- function(x) {
+  df <- read.csv(file.path("us-weather-history", paste0(x, ".csv")))
+  df$stations <- x
+  df$date <- as.Date(df$date)
+  return(df)
+}
 
+glimpse_data <- read_weather("KCLT")
+glimpse(glimpse_data)
+
+view(glimpse_data)
 
 # QUESTION 2
 #> Use map() and your new function to read in all 10 stations
@@ -31,7 +39,7 @@ ds <-
 #> Save the resulting dataset to "ds"
 
 
-
+  read_csv(str_glue("{c(stations)}.csv"), )
 
 # QUESTION 3
 #> Make a factor called "city" based on the station variable
