@@ -50,7 +50,15 @@ view(ds)
 #> and save the results to a new tibble
 #> Write a logical statement that would trigger a warning if any city did not have 365 days
 
+ds <- ds %>% 
+  mutate(city = as.factor(stations))
 
+glimpse(ds)
+#success! city is a factor
+
+rstatix::freq_table(ds$city)
+
+#yes! 365 for all 
 
 
 # QUESTION 4
