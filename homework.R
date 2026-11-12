@@ -56,6 +56,7 @@ ds <- ds %>%
 glimpse(ds)
 #success! city is a factor
 
+?freq_table
 rstatix::freq_table(ds$city)
 
 #yes! 365 for all 
@@ -65,6 +66,8 @@ rstatix::freq_table(ds$city)
 #> In question 3, all of the cities do have 365 days of data, so how would you know
 #> if your check worked? Create a test to mess up the dataset to make sure that your
 #> check does throw an error if the conditions aren't met
+
+
 
 
 
