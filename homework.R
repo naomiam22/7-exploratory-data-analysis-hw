@@ -54,7 +54,6 @@ ds <- ds %>%
   mutate(city = as.factor(stations))
 
 glimpse(ds)
-#success! city is a factor
 
 ?freq_table
 rstatix::freq_table(ds$city)
@@ -84,12 +83,22 @@ rstatix::freq_table(ds_test$city) %>%
 #> in data-clean. If it isn't, read in that file to use for the remaining
 #> questions so that you have the right data to work with.
 
+clean_ds <- read.csv(file.path("data-clean", "compiled_data.csv"))
+
 # QUESTION 5
 #> Find a function that lets you pull out the month from the date 
 #> and make "month" a factor as a new variable in ds
 
+?month
 
+pull_month <- function(x) {
+  clean_ds <- clean_ds %>% 
+    mutate(month = lubridate::month(date))
+  return(clean_ds)
+}
 
+clean_df <- pull_month("KCTL")
+glimpse(clean_df)
 
 
 # QUESTION 7
