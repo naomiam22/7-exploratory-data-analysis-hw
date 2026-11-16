@@ -127,7 +127,11 @@ clean_ds %>%
 #> Finally, use plot_correlation to investigate correlations between the continuous variables only
 #> Check the documentation for plot_correlation for an easy way to do this
 
+clean_ds %>% select(city, date:record_precipitation) %>% plot_boxplot(by = "city")
 
+clean_ds %>% select(month, date:record_precipitation) %>% plot_boxplot(by = month)
+
+clean_ds %>% select(date:record_precipitation) %>% plot_correlation()
 
 
 # QUESTION 9
