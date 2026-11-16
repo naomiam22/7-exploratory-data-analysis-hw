@@ -108,12 +108,26 @@ glimpse(clean_df)
 #> get_summary_stats() to get the mean and SE for actual_mean_temp
 #> by month.
 
+outliers <- clean_ds %>% 
+  identify_outliers(actual_mean_temp)
+
+glimpse(outliers)
+
+clean_ds <- clean_ds %>% 
+  filter(!actual_mean_temp %in% outliers$actual_mean_temp)
+
+clean_ds %>% 
+  get_summary_stats(c("actual_mean_temp"), type = "mean_sd")
+
+
 
 # QUESTION 8
 #> Use the Data Explorer package to plot boxplots of all of the numeric variables in the dataset
 #> grouped by city, then do the same thing grouped by month. 
 #> Finally, use plot_correlation to investigate correlations between the continuous variables only
 #> Check the documentation for plot_correlation for an easy way to do this
+
+
 
 
 # QUESTION 9
